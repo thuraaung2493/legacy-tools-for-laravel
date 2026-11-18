@@ -10,7 +10,7 @@ PHP and Blade editor support for Laravel 7 and 8 projects running PHP 7.4. This 
 | Project PHP | 7.4.33 |
 | Laravel | 7.30.7 and 8.83.29 |
 
-The package includes a language server and its PHP runtime. The server runs project indexing with your application's PHP command. Open the Laravel project root with its Composer dependencies installed. If detection selects another PHP version, configure your PHP 7.4 command in the workspace settings.
+Download the Apple Silicon VSIX from [GitHub Releases](https://github.com/thuraaung2493/legacy-tools-for-laravel/releases). It includes a language-server archive that runs on PHP 8.5. Set `LaravelLegacy.serverPhpPath` in VS Code User Settings to your PHP 8.5 executable. The server indexes the application using the project's PHP command. Open the Laravel project root with its Composer dependencies installed. If detection selects another PHP version, configure your PHP 7.4 command in the workspace settings.
 
 ```json
 {

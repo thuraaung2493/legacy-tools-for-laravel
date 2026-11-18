@@ -3,7 +3,7 @@
     "publisher": "local-preview",
     "displayName": "Legacy Tools for Laravel",
     "description": "PHP and Blade editor support for Laravel 7 and 8 projects on PHP 7.4",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "engines": {
         "vscode": "^1.89.0"
     },
@@ -1459,6 +1459,12 @@
                     "default": true,
                     "generated": true,
                     "description": "Enable completion for view."
+                },
+                "LaravelLegacy.serverPhpPath": {
+                    "type": "string",
+                    "default": "php",
+                    "scope": "machine",
+                    "description": "PHP 8.5 executable used to run the bundled language server archive. The application PHP command is configured separately."
                 }
             }
         }

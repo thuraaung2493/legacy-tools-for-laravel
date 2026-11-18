@@ -1,5 +1,10 @@
 # Change Log
 
+## Legacy Tools for Laravel v0.1.4
+
+- Provide an Apple Silicon VSIX through GitHub Releases with a PHP 8.5 language-server archive.
+- Document custom native packaging and the separate project PHP 7.4 setting.
+
 ## Legacy Tools for Laravel v0.1.2 preview
 
 - Introduce independent branding, an original icon, and a distinct diagnostic label.

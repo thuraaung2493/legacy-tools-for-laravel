@@ -178,6 +178,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 configAffected(
                     event,
                     "phpCommand",
+                    "serverPhpPath",
                     "phpEnvironment",
                     "memoryLimit",
                 )

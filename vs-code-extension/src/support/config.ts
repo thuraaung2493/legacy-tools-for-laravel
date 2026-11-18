@@ -6,6 +6,7 @@ type ConfigKey =
     | "basePath"
     | "phpEnvironment"
     | "phpCommand"
+    | "serverPhpPath"
     | "memoryLimit"
     | "tests.docker.enabled"
     | "tests.ssh.enabled"

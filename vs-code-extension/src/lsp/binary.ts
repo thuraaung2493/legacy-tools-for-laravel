@@ -11,15 +11,17 @@ export function setLspBinaryPath(context: vscode.ExtensionContext): void {
     const target = `${process.platform}-${process.arch}`;
     const suffix = process.platform === "win32" ? ".exe" : "";
     const override = process.env.LARAVEL_LEGACY_LSP_BINARY_PATH;
-    const binary =
-        override ||
-        context.asAbsolutePath(`server/${target}/laravel-legacy-lsp${suffix}`);
+    const native = context.asAbsolutePath(
+        `server/${target}/laravel-legacy-lsp${suffix}`,
+    );
+    const archive = context.asAbsolutePath("server/laravel-legacy-lsp.phar");
+    const binary = override || (fs.existsSync(native) ? native : archive);
 
     if (!fs.existsSync(binary)) {
         throw new Error(
             override
                 ? `Server executable does not exist at ${override}.`
-                : `This VSIX has no server executable for ${target}.`,
+                : `This VSIX has no language server for ${target}.`,
         );
     }
 

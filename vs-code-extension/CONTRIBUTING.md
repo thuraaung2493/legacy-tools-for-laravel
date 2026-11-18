@@ -2,21 +2,32 @@
 
 The [extension](https://github.com/laravel/vs-code-extension) and [language-server](https://github.com/laravel/lsp) sources are in `vs-code-extension/` and `lsp/`. Use Node 22 or newer for the extension and PHP 8.5 for the language server build.
 
-## Build and package on Apple Silicon
+## Build a VSIX on Apple Silicon
 
-Run the commands from the repository root. The first command builds the server PHAR with the repository's locked Composer dependencies.
+Run these commands at the repository root. Use PHP 8.5 and Composer on PATH for the language-server build.
 
 ```sh
-(cd lsp && composer install && php -d phar.readonly=0 server app:build laravel-legacy-lsp --build-version=v0.1.3)
-(cd vs-code-extension && npm ci)
-mkdir -p vs-code-extension/server/darwin-arm64
-spc micro:combine lsp/builds/laravel-legacy-lsp --with-micro /absolute/path/to/micro.sfx -I memory_limit=512M -O vs-code-extension/server/darwin-arm64/laravel-legacy-lsp
-(cd vs-code-extension && npx --yes @vscode/vsce@4.1.1 package --pre-release --no-dependencies --target darwin-arm64)
+mkdir -p lsp/builds vs-code-extension/server
+(cd lsp && composer install && php -d phar.readonly=0 server app:build laravel-legacy-lsp --build-version=v0.1.4)
+cp lsp/builds/laravel-legacy-lsp vs-code-extension/server/laravel-legacy-lsp.phar
+(cd vs-code-extension && npm ci && npx --yes @vscode/vsce@4.1.1 package --no-dependencies --target darwin-arm64)
 ```
 
-Use the PHP 8.5.8 macOS arm64 [static runtime](https://dl.static-php.dev/static-php-cli/common/php-8.5.8-micro-macos-aarch64.tar.gz) and [static-php-cli](https://github.com/crazywhalecc/static-php-cli/releases) to make the bundled executable. For another platform, stage the equivalent executable under `server/<process.platform>-<process.arch>/laravel-legacy-lsp`, add `.exe` on Windows, and select the matching VS Code target when packaging.
+Install the VSIX from the VS Code Extensions menu. Set `LaravelLegacy.serverPhpPath` in User Settings to the PHP 8.5 executable that will run the server archive. Set `LaravelLegacy.phpCommand` in the project workspace to select the app's PHP 7.4 command.
 
-Use `LARAVEL_LEGACY_LSP_BINARY_PATH` in the extension host's environment to point a development session at a custom executable.
+## Custom build with a self-contained server
+
+Build the language-server archive as above. Use the matching [StaticPHP micro archive](https://dl.static-php.dev/static-php-cli/common/) and [static-php-cli release](https://github.com/crazywhalecc/static-php-cli/releases) to combine the archive with a native PHP runtime. For Apple Silicon, pass the extracted macOS arm64 `micro.sfx` to this command from the repository root:
+
+```sh
+mkdir -p vs-code-extension/server/darwin-arm64
+spc micro:combine lsp/builds/laravel-legacy-lsp --with-micro /absolute/path/to/micro.sfx -I memory_limit=512M -O vs-code-extension/server/darwin-arm64/laravel-legacy-lsp
+(cd vs-code-extension && npx --yes @vscode/vsce@4.1.1 package --no-dependencies --target darwin-arm64)
+```
+
+The extension prefers the matching native server over the PHAR when both are packaged. For another platform, stage the corresponding binary under `server/<process.platform>-<process.arch>/laravel-legacy-lsp`, add `.exe` on Windows, and use the matching VS Code package target. Use `LARAVEL_LEGACY_LSP_BINARY_PATH` in the extension host's environment to test a custom executable or `.phar` directly.
+
+See `THIRD-PARTY.md` before redistributing a self-contained build.
 
 ## Verify legacy projects
 
@@ -30,9 +41,6 @@ node scripts/check-legacy.mjs server/darwin-arm64/laravel-legacy-lsp /absolute/p
 
 The application-side templates are in `lsp/app/Lsp/Data/Templates/`. Run `php -l` on those files with PHP 7.4 when changing them. Leave the language server itself on the modern runtime.
 
+## GitHub releases
 
-## Marketplace pre-release
-
-The development manifest uses `local-preview` as the publisher. Set `publisher` to the registered Marketplace publisher ID. The extension ID for the published build is `<publisher>.legacy-tools-for-laravel`.
-
-Review the bundled runtime's redistribution terms in `THIRD-PARTY.md`. Build the final VSIX with `--pre-release --target darwin-arm64` and verify it in a clean editor profile before uploading. The original SVG for the PNG icon is in `artwork/marketplace-icon.svg`.
+Attach the VSIX and its SHA-256 checksum to a GitHub release. The original SVG for the PNG icon is in `artwork/marketplace-icon.svg`.

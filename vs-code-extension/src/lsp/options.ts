@@ -9,18 +9,13 @@ export function createServerOptions(
     binaryPath: string,
     workspaceFolder?: vscode.WorkspaceFolder,
 ): ServerOptions {
-    if (!workspaceFolder) {
-        return {
-            command: binaryPath,
-            args: ["lsp"],
-        };
-    }
+    const archive = binaryPath.endsWith(".phar");
 
     return {
-        command: binaryPath,
-        args: ["lsp"],
+        command: archive ? config("serverPhpPath", "php") : binaryPath,
+        args: archive ? [binaryPath, "lsp"] : ["lsp"],
         options: {
-            cwd: workspaceFolder.uri.fsPath,
+            cwd: workspaceFolder?.uri.fsPath,
         },
     };
 }
