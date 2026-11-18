@@ -1,0 +1,1518 @@
+{
+    "name": "legacy-tools-for-laravel",
+    "publisher": "local-preview",
+    "displayName": "Legacy Tools for Laravel",
+    "description": "PHP and Blade editor support for Laravel 7 and 8 projects on PHP 7.4",
+    "version": "0.1.3",
+    "engines": {
+        "vscode": "^1.89.0"
+    },
+    "keywords": [
+        "laravel",
+        "php",
+        "blade",
+        "eloquent"
+    ],
+    "icon": "icon.png",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:php",
+        "workspaceContains:artisan"
+    ],
+    "main": "./dist/extension.js",
+    "grammars": [
+        {
+            "language": "blade",
+            "scopeName": "text.html.php.blade",
+            "path": "./syntaxes/blade.tmLanguage.json",
+            "embeddedLanguages": {
+                "source.php": "php",
+                "source.css": "css",
+                "source.js": "javascript"
+            }
+        }
+    ],
+    "contributes": {
+        "submenus": [
+            {
+                "id": "laravelLegacy.wrapWithHelper.submenu",
+                "label": "Wrap selection with helpers"
+            },
+            {
+                "id": "laravelLegacy.artisanMake.submenu",
+                "label": "New Laravel File..."
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "laravelLegacy.wrapWithHelper",
+                    "when": "editorHasSelection",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.unwrap",
+                    "when": "editorHasSelection",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.dd",
+                    "when": "false",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.dump",
+                    "when": "false",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.collect",
+                    "when": "false",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.str",
+                    "when": "false",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.refactorSelectedHtmlClassToBladeDirective",
+                    "when": "editorHasSelection && resourceLangId == blade",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.refactorAllHtmlClassesToBladeDirectives",
+                    "when": "resourceLangId == blade",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.namespace.generate",
+                    "when": "resourceLangId == php",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.goToRoute",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.cast",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.channel",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.class",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.command",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.component",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.controller",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.enum",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.event",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.exception",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.factory",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.interface",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.job",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.job-middleware",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.listener",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.livewire",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.mail",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.middleware",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.migration",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.model",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.notification",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.observer",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.policy",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.provider",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.request",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.resource",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.rule",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.scope",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.seeder",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.test",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.trait",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.view",
+                    "when": "config.LaravelLegacy.artisanMake.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.migrate",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.migrateFresh",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.migrateRefresh",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.migrateRollback",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.migrateStatus",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.tinker",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.db",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.dbShow",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.routeList",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.pail",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.authClearResets",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.dbSeed",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.dbTable",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.dbWipe",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.eventList",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.keyGenerate",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.modelShow",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.pestDataset",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.queueClear",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.queueFailed",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.queueFlush",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.queueForget",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.queueRetry",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.scheduleList",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.scheduleTest",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.schemaDump",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.wayfinderGenerate",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.cacheClear",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.artisan.vendorPublish",
+                    "when": "config.LaravelLegacy.artisanCommands.commandPalette",
+                    "group": "laravel"
+                }
+            ],
+            "editor/context": [
+                {
+                    "submenu": "laravelLegacy.wrapWithHelper.submenu",
+                    "when": "editorHasSelection",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.unwrap",
+                    "when": "editorHasSelection",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.refactorSelectedHtmlClassToBladeDirective",
+                    "when": "editorHasSelection && resourceLangId == blade",
+                    "group": "laravel"
+                },
+                {
+                    "command": "laravelLegacy.refactorAllHtmlClassesToBladeDirectives",
+                    "when": "resourceLangId == blade",
+                    "group": "laravel"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "submenu": "laravelLegacy.artisanMake.submenu",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src|database|resource(s?)|test(s?))(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                }
+            ],
+            "laravelLegacy.artisanMake.submenu": [
+                {
+                    "command": "laravelLegacy.artisan.make.cast",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Cast(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.channel",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Broadcasting(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.class",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.command",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Console(\\/|\\\\)Command(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.component",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)View(s?)(\\/|\\\\)Component(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.controller",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Controller(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.enum",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(Enum|ValueObject)(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.event",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Event(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.exception",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Exception(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.factory",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Factor(y|ies)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.interface",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.job",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Job(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.job-middleware",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Job(s?)(\\/|\\\\)Middleware(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.listener",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Listener(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.livewire",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Livewire(\\/|\\\\)Component(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.mail",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Mail(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.middleware",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Middleware(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.migration",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Migration(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.model",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Model(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.notification",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Notification(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.observer",
+                    "when": "explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Observer(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.policy",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Polic(y|ies)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.provider",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Provider(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.request",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Request(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.resource",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Resource(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.rule",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Rule(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.scope",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Scope(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.seeder",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Seed(er?)(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.test",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Test(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.trait",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                },
+                {
+                    "command": "laravelLegacy.artisan.make.view",
+                    "when": "config.LaravelLegacy.artisanMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)View(s?)(\\/|\\\\|$)/i",
+                    "group": "navigation"
+                }
+            ],
+            "laravelLegacy.wrapWithHelper.submenu": [
+                {
+                    "command": "laravelLegacy.wrapWithHelper.dd"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.dump"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.collect"
+                },
+                {
+                    "command": "laravelLegacy.wrapWithHelper.str"
+                }
+            ]
+        },
+        "languages": [
+            {
+                "id": "blade",
+                "aliases": [
+                    "Blade",
+                    "blade"
+                ],
+                "extensions": [
+                    ".blade.php"
+                ],
+                "configuration": "./blade.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "blade",
+                "scopeName": "text.html.php.blade",
+                "path": "./syntaxes/blade.tmLanguage.json",
+                "embeddedLanguages": {
+                    "source.php": "php",
+                    "source.css": "css",
+                    "source.js": "javascript"
+                }
+            }
+        ],
+        "commands": [
+            {
+                "command": "laravelLegacy.pint.run",
+                "title": "Run Pint",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.pint.runOnDirtyFiles",
+                "title": "Run Pint on Dirty Files",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.pint.runOnCurrentFile",
+                "title": "Run Pint on Current File",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper",
+                "title": "Wrap selection with helper",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper.unwrap",
+                "title": "Unwrap selection",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper.dd",
+                "title": "with dd(...)",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper.dump",
+                "title": "with dump(...)",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper.collect",
+                "title": "with collect(...)",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.wrapWithHelper.str",
+                "title": "with str(...)",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.refactorSelectedHtmlClassToBladeDirective",
+                "title": "Refactor selected HTML class attribute to Blade directive",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.refactorAllHtmlClassesToBladeDirectives",
+                "title": "Refactor all HTML class attributes to Blade directives",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.namespace.generate",
+                "title": "Generate Namespace",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.goToRoute",
+                "title": "Go to Route",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.cast",
+                "title": "Make Cast",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.channel",
+                "title": "Make Channel",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.class",
+                "title": "Make Class",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.command",
+                "title": "Make Console Command",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.component",
+                "title": "Make View Component",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.controller",
+                "title": "Make Controller",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.enum",
+                "title": "Make Enum",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.event",
+                "title": "Make Event",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.exception",
+                "title": "Make Exception",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.factory",
+                "title": "Make Factory",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.interface",
+                "title": "Make Interface",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.job",
+                "title": "Make Job",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.job-middleware",
+                "title": "Make Job Middleware",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.listener",
+                "title": "Make Event Listener",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.livewire",
+                "title": "Make Livewire Component",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.mail",
+                "title": "Make Mail",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.middleware",
+                "title": "Make Middleware",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.migration",
+                "title": "Make Migration",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.model",
+                "title": "Make Model",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.notification",
+                "title": "Make Notification",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.observer",
+                "title": "Make Observer",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.policy",
+                "title": "Make Policy",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.provider",
+                "title": "Make Service Provider",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.request",
+                "title": "Make Form Request",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.resource",
+                "title": "Make Resource",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.rule",
+                "title": "Make Validation Rule",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.scope",
+                "title": "Make Scope",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.seeder",
+                "title": "Make Database Seeder",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.test",
+                "title": "Make Test",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.trait",
+                "title": "Make Trait",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.make.view",
+                "title": "Make View",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.migrate",
+                "title": "artisan migrate | Run the database migrations",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.migrateFresh",
+                "title": "artisan migrate:fresh | Drop all tables and re-run all migrations",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.migrateRefresh",
+                "title": "artisan migrate:refresh | Reset and re-run all migrations",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.migrateRollback",
+                "title": "artisan migrate:rollback | Rollback the last database migration",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.migrateStatus",
+                "title": "artisan migrate:status | Show the status of each migration",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.tinker",
+                "title": "artisan tinker | Interact with your application",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.db",
+                "title": "artisan db | Start a new database CLI session",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.dbShow",
+                "title": "artisan db:show | Display information about the given database",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.routeList",
+                "title": "artisan route:list | List all registered routes",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.pail",
+                "title": "artisan pail | Tail the application logs",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.authClearResets",
+                "title": "artisan auth:clear-resets | Flush expired password reset tokens",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.dbSeed",
+                "title": "artisan db:seed | Seed the database with records",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.dbTable",
+                "title": "artisan db:table | Display information about the given database table",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.dbWipe",
+                "title": "artisan db:wipe | Drop all tables, views, and types",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.eventList",
+                "title": "artisan event:list | List the application's events and listeners",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.keyGenerate",
+                "title": "artisan key:generate | Set the application key",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.modelShow",
+                "title": "artisan model:show | Show information about an Eloquent model",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.pestDataset",
+                "title": "artisan pest:dataset | Create a new dataset file",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.queueClear",
+                "title": "artisan queue:clear | Delete all of the jobs from the specified queue",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.queueFailed",
+                "title": "artisan queue:failed | List all of the failed queue jobs",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.queueFlush",
+                "title": "artisan queue:flush | Flush all of the failed queue jobs",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.queueForget",
+                "title": "artisan queue:forget | Delete a failed queue job",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.queueRetry",
+                "title": "artisan queue:retry | Retry a failed queue job",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.scheduleList",
+                "title": "artisan schedule:list | List all scheduled tasks",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.scheduleTest",
+                "title": "artisan schedule:test | Run a scheduled command",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.schemaDump",
+                "title": "artisan schema:dump | Dump the given database schema",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.wayfinderGenerate",
+                "title": "artisan wayfinder:generate | Generate Wayfinder",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.cacheClear",
+                "title": "artisan cache:clear | Flush the application cache",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.artisan.vendorPublish",
+                "title": "artisan vendor:publish | Publish any publishable assets from vendor packages",
+                "category": "Legacy Tools for Laravel"
+            },
+            {
+                "command": "laravelLegacy.docker.configure",
+                "title": "Configure Docker Environment",
+                "category": "Legacy Tools for Laravel"
+            }
+        ],
+        "configuration": {
+            "title": "Legacy Tools for Laravel",
+            "properties": {
+                "LaravelLegacy.phpEnvironment": {
+                    "type": "string",
+                    "enum": [
+                        "auto",
+                        "herd",
+                        "valet",
+                        "sail",
+                        "lando",
+                        "ddev",
+                        "local",
+                        "docker"
+                    ],
+                    "enumItemLabels": [
+                        "Auto Detect",
+                        "Herd",
+                        "Valet",
+                        "Sail",
+                        "Lando",
+                        "DDEV",
+                        "Local",
+                        "Docker"
+                    ],
+                    "markdownEnumDescriptions": [
+                        "Auto detect the local PHP environment.",
+                        "Auto detect PHP version Herd is using for the project.",
+                        "Auto detect PHP version Valet is using for the project.",
+                        "Sail",
+                        "Lando",
+                        "DDEV",
+                        "Use PHP installed on the local machine.",
+                        "Docker"
+                    ],
+                    "default": "auto",
+                    "markdownDescription": "Local PHP environment used for path handling in environments such as Sail, Lando, DDEV, and Docker. PHP execution uses `#LaravelLegacy.phpCommand#`."
+                },
+                "LaravelLegacy.phpCommand": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PHP command used by the Laravel LSP server, Docker environment configuration, Artisan commands, Pint, and test runner, in argv format. Defaults to php when empty."
+                },
+                "LaravelLegacy.memoryLimit": {
+                    "type": "string",
+                    "default": "512M",
+                    "markdownDescription": "Memory limit for the Laravel LSP server process. Use PHP shorthand such as `512M`, `1G`, or `-1`. This does not change `#LaravelLegacy.phpCommand#`."
+                },
+                "laravelLsp.trace.server": {
+                    "scope": "window",
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "default": "off",
+                    "description": "Traces the communication between VS Code and the Laravel LSP server."
+                },
+                "LaravelLegacy.basePath": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "_Relative_ base path for the Laravel project. This is used to resolve paths in the project. e.g. src, code/backend\n\n_Requires extension reload after changing._"
+                },
+                "LaravelLegacy.showErrorPopups": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show popups for errors."
+                },
+                "LaravelLegacy.env.viteQuickFix": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable quickfix for adding VITE_ variables from regular env variables."
+                },
+                "LaravelLegacy.pest.generateDocBlocks": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically generate a Pest helper file for test closures to enhance IDE support."
+                },
+                "LaravelLegacy.pest.helperFilePath": {
+                    "type": "string",
+                    "default": "storage/framework/testing/_pest.php",
+                    "description": "Path to the generated Pest helper file, relative to the project root."
+                },
+                "LaravelLegacy.blade.autoSpaceTags": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically add spacing around Blade echo and comment tags."
+                },
+                "LaravelLegacy.pint.runOnSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Automatically run Pint on the current file when saved."
+                },
+                "LaravelLegacy.testRunner.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable the test runner integration."
+                },
+                "LaravelLegacy.artisanMake.explorer": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable Laravel Artisan Make commands in the VSCode explorer."
+                },
+                "LaravelLegacy.artisanMake.commandPalette": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable Laravel Artisan Make commands in the VSCode command palette."
+                },
+                "LaravelLegacy.artisanCommands.commandPalette": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable Laravel Artisan commands in the VSCode command palette."
+                },
+                "LaravelLegacy.appBinding.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for app bindings."
+                },
+                "LaravelLegacy.appBinding.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for app bindings."
+                },
+                "LaravelLegacy.appBinding.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for app bindings."
+                },
+                "LaravelLegacy.appBinding.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for app bindings."
+                },
+                "LaravelLegacy.asset.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for asset."
+                },
+                "LaravelLegacy.asset.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for asset."
+                },
+                "LaravelLegacy.asset.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for asset."
+                },
+                "LaravelLegacy.asset.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for asset."
+                },
+                "LaravelLegacy.auth.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for auth."
+                },
+                "LaravelLegacy.auth.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for auth."
+                },
+                "LaravelLegacy.auth.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for auth."
+                },
+                "LaravelLegacy.auth.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for auth."
+                },
+                "LaravelLegacy.bladeComponent.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for Blade components."
+                },
+                "LaravelLegacy.bladeComponent.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for Blade components."
+                },
+                "LaravelLegacy.bladeComponent.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for Blade components."
+                },
+                "LaravelLegacy.config.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for config."
+                },
+                "LaravelLegacy.config.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for config."
+                },
+                "LaravelLegacy.config.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for config."
+                },
+                "LaravelLegacy.config.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for config."
+                },
+                "LaravelLegacy.controllerAction.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for controller actions."
+                },
+                "LaravelLegacy.controllerAction.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for controller actions."
+                },
+                "LaravelLegacy.controllerAction.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for controller actions."
+                },
+                "LaravelLegacy.controllerAction.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for controller actions."
+                },
+                "LaravelLegacy.env.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for env."
+                },
+                "LaravelLegacy.env.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for env."
+                },
+                "LaravelLegacy.env.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for env."
+                },
+                "LaravelLegacy.env.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for env."
+                },
+                "LaravelLegacy.inertia.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for Inertia."
+                },
+                "LaravelLegacy.inertia.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for Inertia."
+                },
+                "LaravelLegacy.inertia.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for Inertia."
+                },
+                "LaravelLegacy.inertia.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for Inertia."
+                },
+                "LaravelLegacy.livewireComponent.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for Livewire components."
+                },
+                "LaravelLegacy.livewireComponent.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for Livewire components."
+                },
+                "LaravelLegacy.livewireComponent.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for Livewire components."
+                },
+                "LaravelLegacy.middleware.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for middleware."
+                },
+                "LaravelLegacy.middleware.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for middleware."
+                },
+                "LaravelLegacy.middleware.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for middleware."
+                },
+                "LaravelLegacy.middleware.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for middleware."
+                },
+                "LaravelLegacy.mix.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for mix."
+                },
+                "LaravelLegacy.mix.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for mix."
+                },
+                "LaravelLegacy.mix.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for mix."
+                },
+                "LaravelLegacy.mix.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for mix."
+                },
+                "LaravelLegacy.paths.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for paths."
+                },
+                "LaravelLegacy.route.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for route."
+                },
+                "LaravelLegacy.route.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for route."
+                },
+                "LaravelLegacy.route.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for route."
+                },
+                "LaravelLegacy.route.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for route."
+                },
+                "LaravelLegacy.storage.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for storage."
+                },
+                "LaravelLegacy.storage.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for storage."
+                },
+                "LaravelLegacy.storage.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for storage."
+                },
+                "LaravelLegacy.translation.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for translation."
+                },
+                "LaravelLegacy.translation.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for translation."
+                },
+                "LaravelLegacy.translation.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for translation."
+                },
+                "LaravelLegacy.translation.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for translation."
+                },
+                "LaravelLegacy.view.diagnostics": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable diagnostics for view."
+                },
+                "LaravelLegacy.view.hover": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable hover information for view."
+                },
+                "LaravelLegacy.view.link": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable linking for view."
+                },
+                "LaravelLegacy.view.completion": {
+                    "type": "boolean",
+                    "default": true,
+                    "generated": true,
+                    "description": "Enable completion for view."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "pretest": "rimraf out && npm run compile && tsc && npm run lint",
+        "lint": "eslint src --ext ts",
+        "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
+        "test": "vscode-test",
+        "compile": "npm run check-types && node esbuild.js",
+        "check-types": "tsc --noEmit",
+        "watch": "npm-run-all -p watch:*",
+        "watch:esbuild": "node esbuild.js --watch",
+        "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+        "vscode:prepublish": "npm run package",
+        "package": "npm run check-types && node esbuild.js --production"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.89.0",
+        "@typescript-eslint/eslint-plugin": "^8.69.0",
+        "@typescript-eslint/parser": "^8.69.0",
+        "@vscode/test-cli": "^0.0.15",
+        "@vscode/test-electron": "^3.1.0",
+        "esbuild": ">=0.28.1",
+        "eslint": "^8.57.0",
+        "prettier": "^3.0.0",
+        "typescript": "^5.4.5",
+        "vscode-jsonrpc": "8.2.0"
+    },
+    "dependencies": {
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^6.0.1",
+        "uuid": "^11.0.3",
+        "vscode-languageclient": "^9.0.1"
+    },
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": false
+        }
+    },
+    "galleryBanner": {
+        "color": "#0B1C2D",
+        "theme": "dark"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thuraaung2493/legacy-tools-for-laravel.git",
+        "directory": "vs-code-extension"
+    },
+    "homepage": "https://github.com/thuraaung2493/legacy-tools-for-laravel#readme",
+    "bugs": {
+        "url": "https://github.com/thuraaung2493/legacy-tools-for-laravel/issues"
+    }
+}
